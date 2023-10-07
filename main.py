@@ -51,16 +51,7 @@ circles = cv2.HoughCircles(gray,
                            maxRadius=175
                            )
 if circles is None:
-#    account_sid = "ACc658503e6f5e0efcec4ac334f0f16b69"
-#    auth_token = "d4703fb3df6d7fdcdcc78015ad319d77"
-#
-#    client = Client(account_sid, auth_token)
-#
-#    message = client.messages.create(
-#        body = "No dog bowl detected under PiCam. Check dog bowl",
-#        from_ = "+18665184103",
-#        to = "+15206684049"
-#        )
+#send twilio message
     exit()
     
 circles = np.uint16(np.around(circles))[0]
