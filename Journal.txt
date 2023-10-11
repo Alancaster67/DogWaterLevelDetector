@@ -1,0 +1,13 @@
+This is a journal of my experience building this project.
+
+10/10/2023 21:00 ; Training-Validation Split Issue
+After following the tensorflow tutorial and training the model using those parameters, I was
+excited that the validation accuracy was nearly 99%. However, I was disappointed when I deployed
+the model for further testing and the accuracy was very bad. I assumed the model had overfit my
+training data but I couldn't understand why the validation accuracy was so high. I spent a few
+days collectiong more data to use as a totally seperate validation dataset instead of using the
+train-validation split method. After retraining on the initial dataset and testing it on the new
+validation dataset, I started to get validation accuracy that matched what I was seeing in
+"production." The data collection method leads to a lot of known data replication and, I theorize,
+this causes cross-contaminates between the training and validation dataset when usingthe random data
+splitting approach.

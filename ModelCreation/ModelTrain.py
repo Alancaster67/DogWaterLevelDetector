@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 # %%
 
-data_dir = pathlib.Path("./BowlImages").with_suffix('')
+data_dir = pathlib.Path("./Images").with_suffix('')
 
 batch_size = 32
 img_height = 258
