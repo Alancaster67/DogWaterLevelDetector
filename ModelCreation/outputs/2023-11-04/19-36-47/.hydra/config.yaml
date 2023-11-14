@@ -1,0 +1,32 @@
+input_shape:
+- 258
+- 258
+- 3
+input_shape_tuple:
+  _target_: builtins.tuple
+  _args_:
+  - ${input_shape}
+input_layer:
+  _target_: tensorflow.keras.layers.InputLayer
+  input_shape: ${input_shape_tuple}
+  dtype: uint8
+rescaling_layer:
+  _target_: tensorflow.keras.layers.Rescaling
+  scale: 0.003921568627451
+hl1:
+  _target_: tensorflow.keras.layers.Conv2D
+  filters: 16
+  kernel_size: 3
+  padding: same
+  activation: relu
+layers:
+- ${input_layer}
+- ${rescaling_layer}
+- ${hl1}
+layer_list:
+  _target_: builtins.list
+  _args_:
+  - ${layers}
+model:
+  _target_: tensorflow.keras.models.Sequential
+  layers: ${layer_list}

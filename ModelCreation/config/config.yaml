@@ -1,0 +1,7 @@
+defaults:
+  - modelconf: toymodel
+
+input_shape:
+  - 258
+  - 258
+  - 3

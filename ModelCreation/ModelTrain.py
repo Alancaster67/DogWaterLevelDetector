@@ -1,3 +1,4 @@
+#! C:\Users\alanc\OneDrive\Documents\Python Projects\DogWaterLevelDetector\ModelCreation\venv\Scripts\python.exe
 #%%
 import PIL
 import tensorflow as tf
@@ -7,12 +8,42 @@ from tensorflow.keras.models import Sequential
 import pathlib
 import numpy as np
 import matplotlib.pyplot as plt
-# %%
+import hydra
+from omegaconf import DictConfig, OmegaConf
+#%%
+pathlib.Path.cwd()
+
+@hydra.main(version_base = None, config_path="./config", config_name="config")
+def train_model(cfg: DictConfig):
+  hydra.utils.get_original_cwd()
+  print(type(cfg))
+  print(cfg)
+
+if __name__ == "__main__":
+    train_model()
+
+#%%
+model = Sequential([
+  layers.InputLayer(input_shape = (258,258,3),dtype='uint8'),
+  layers.Rescaling(1/255),
+  layers.Conv2D(16, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(32, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Conv2D(64, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Flatten(),
+  layers.Dense(128, activation='relu'),
+  layers.Dense(2, activation = 'sigmoid')
+])
+#%%
+
+"""# %%
 
 data_dir = pathlib.Path("./Images").with_suffix('')
 
 batch_size = 32
-img_height = 258
+img_height = 25
 img_width = 258
 
 train_ds = tf.keras.utils.image_dataset_from_directory(
@@ -94,5 +125,4 @@ tflite_model = converter.convert()
 
 # Save the model.
 with open('model_sigmoid.tflite', 'wb') as f:
-  f.write(tflite_model)
-# %%
+  f.write(tflite_model)"""

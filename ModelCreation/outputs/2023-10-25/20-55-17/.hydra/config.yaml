@@ -1,0 +1,3 @@
+batch_size: 32
+img_height: 258
+img_width: 258

@@ -1,0 +1,10 @@
+input_shape:
+- 258
+- 258
+- 3
+model:
+  _target_: tensorflow.keras.layers.InputLayer
+  args:
+    _target_: builtins.tuple
+    args:
+    - ${input_shape}
