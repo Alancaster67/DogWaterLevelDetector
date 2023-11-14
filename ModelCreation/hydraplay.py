@@ -11,8 +11,7 @@ OmegaConf.register_new_resolver("eval", eval)
 @hydra.main(version_base = None, config_path="./config", config_name="config")
 def config(cfg):
     a = instantiate(cfg.modelconf.model)
-    print(type(a))
-    print(cfg.modelconf.layersconf)
+    print(a.layers)
 
 if __name__ == "__main__":
     config()
