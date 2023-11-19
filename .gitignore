@@ -1,3 +1,5 @@
 ModelCreation/venv/
+ModelCreation/multirun/
+ModelCreation/outputs/
 .env
 *.jpg

@@ -4,11 +4,11 @@ defaults:
 layers:
   - ${modelconf.layersconf.input_layer}
   - ${modelconf.layersconf.rescaling_layer}
-  - ${modelconf.layersconf.2Dconv_16f}
+  - ${modelconf.layersconf.Conv2D_1}
   - ${modelconf.layersconf.MaxPooling2D}
-  - ${modelconf.layersconf.2Dconv_32f}
+  - ${modelconf.layersconf.Conv2D_2}
   - ${modelconf.layersconf.MaxPooling2D}
-  - ${modelconf.layersconf.2Dconv_64f}
+  - ${modelconf.layersconf.Conv2D_3}
   - ${modelconf.layersconf.MaxPooling2D}
   - ${modelconf.layersconf.Flatten}
   - ${modelconf.layersconf.Dense128}

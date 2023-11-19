@@ -1,5 +1,6 @@
 defaults:
   - modelconf: toymodel
+  - hydra: toysweeper
 
 input_shape:
   - 258
