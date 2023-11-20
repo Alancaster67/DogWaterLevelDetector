@@ -11,3 +11,10 @@ validation dataset, I started to get validation accuracy that matched what I was
 "production." The data collection method leads to a lot of known data replication and, I theorize,
 this causes cross-contaminates between the training and validation dataset when usingthe random data
 splitting approach.
+
+11/20/2023 13:46 ; Hydra Setup
+It took a while to learn, set up and integrate hydra into the project. This is partly due to my day job
+workload, family visiting, and my son being born. However, meaningful integration of hydra and learning how
+to use it was not easy. The easy of which it allows one ot automate experimentation should be worth it though.
+I have yet to set up hydra logging and experimental data analysis quite yet. DVC integrates with hydra so it
+might be worth looking into the capabilities of this tool.
