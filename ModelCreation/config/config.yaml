@@ -1,13 +1,19 @@
 defaults:
   - modelconf: toymodel
   - hydra: toysweeper
+  - dataconf: data
 
-input_shape:
-  - 258
-  - 258
-  - 3
+epochs: 10
+batch_size: 32
+optimizer: adam
+loss:
+  _target_: tensorflow.keras.losses.SparseCategoricalCrossentropy
+  from_logits: False
 
-input_shape_tuple:
-  _target_: builtins.tuple
+metrics:
+  - accuracy
+
+metrics_list:
+  _target_: builtins.list
   _args_:
-    - ${input_shape}
+    - ${metrics}

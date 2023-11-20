@@ -2,30 +2,53 @@
 import hydra
 from hydra.utils import instantiate
 import tensorflow as tf
-#from tensorflow.keras import layers
-#from tensorflow.keras.models import Sequential
 from omegaconf import OmegaConf
+import pathlib
 
 OmegaConf.register_new_resolver("eval", eval)
 
 @hydra.main(version_base = None, config_path="./config", config_name="config")
-def config(cfg):
-    a = instantiate(cfg.modelconf.model)
-    print(cfg.modelconf.layersconf.Conv2D_1.filters)
-    print(cfg.modelconf.layersconf.Conv2D_2.filters)
-
-if __name__ == "__main__":
-    config()
+def train_model(cfg):
+    model = instantiate(cfg.modelconf.model)
+    performance_metrics = instantiate(cfg.metrics_list)
     
-#import torch
-#from hydra import initialize, compose
-#import hydra
-#from hydra.utils import instantiate
-#initialize("./config") # Assume the configuration file is in the current folder
-#cfg = compose(config_name='config')
-#net = instantiate(cfg.feature_extractor)
+    train_dir = pathlib.Path.cwd().parent / cfg.dataconf.train_dataset
+    val_dir = pathlib.Path.cwd().parent / cfg.dataconf.validation_dataset
+    
+    train_ds = tf.keras.utils.image_dataset_from_directory(
+        train_dir,
+        label_mode = 'binary',
+        image_size=(cfg.dataconf.input_shape[0], cfg.dataconf.input_shape[1]),
+        batch_size=cfg.batch_size)
+    
+    val_ds = tf.keras.utils.image_dataset_from_directory(
+        val_dir,
+        label_mode = 'binary',
+        image_size=(cfg.dataconf.input_shape[0], cfg.dataconf.input_shape[1]),
+        batch_size=cfg.batch_size)
+    
+    AUTOTUNE = tf.data.AUTOTUNE
 
-#@hydra.main(version_base = None, config_path="./config", config_name="config")
-#def train(cfg):
-#    net = instantiate(cfg.feature_extractor)
-#    print(net)
+    train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
+    val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
+
+    model.compile(optimizer= cfg.optimizer,
+              loss=instantiate(cfg.loss),
+              metrics=instantiate(cfg.metrics_list))
+    
+    
+    history = model.fit(
+    train_ds,
+    validation_data=val_ds,
+    epochs=cfg.epochs
+    )
+    
+    acc = history.history['accuracy']
+    val_acc = history.history['val_accuracy']
+
+    loss = history.history['loss']
+    val_loss = history.history['val_loss']
+    
+if __name__ == "__main__":
+    train_model()
+    
