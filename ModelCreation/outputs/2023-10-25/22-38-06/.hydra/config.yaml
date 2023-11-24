@@ -1,4 +1,0 @@
-feature_extractor:
-  _target_: torch.nn.Linear
-  in_features: 9216
-  out_features: 100
