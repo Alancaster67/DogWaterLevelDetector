@@ -3,3 +3,5 @@ ModelCreation/multirun/
 ModelCreation/outputs/
 .env
 *.jpg
+/Data
+*.dvcignore
