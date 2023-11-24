@@ -1,3 +1,5 @@
-ModelCreation/train_env/
+ModelCreation/venv/
+ModelCreation/multirun/
+ModelCreation/outputs/
 .env
 *.jpg

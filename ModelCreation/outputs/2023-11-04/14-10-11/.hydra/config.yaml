@@ -1,0 +1,6 @@
+model:
+  _target_: builtins.tuple
+  _args_:
+  - 258
+  - 258
+  - 3

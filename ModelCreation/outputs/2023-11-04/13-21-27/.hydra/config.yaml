@@ -1,0 +1,6 @@
+layers:
+  _target_: tensorflow.keras.layers.InputLayer
+  input_shape: (258,258,3)
+  dtype: uint8
+model:
+  _target_: tensorflow.keras.models.Sequential

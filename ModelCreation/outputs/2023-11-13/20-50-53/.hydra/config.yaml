@@ -1,0 +1,64 @@
+modelconf:
+  layersconf:
+    input_layer:
+      _target_: tensorflow.keras.layers.InputLayer
+      input_shape: ${input_shape_tuple}
+      dtype: uint8
+    rescaling_layer:
+      _target_: tensorflow.keras.layers.Rescaling
+      scale: ${eval:'1/255'}
+    2Dconv_16f:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 16
+      kernel_size: 3
+      padding: same
+      activation: relu
+    2Dconv_32f:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 32
+      kernel_size: 3
+      padding: same
+      activation: relu
+    2Dconv_64f:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 64
+      kernel_size: 3
+      padding: same
+      activation: relu
+    Flatten:
+      _target_: tensorflow.keras.layers.Flatten
+    MaxPooling2D:
+      _target_: tensorflow.keras.layers.MaxPooling2D
+    Dense128:
+      _target_: tensorflow.keras.layers.Dense
+      units: 128
+      activation: relu
+    Out_layer:
+      _target_: tensorflow.keras.layers.Dense
+      units: 2
+      activation: sigmoid
+  layers:
+  - ${modelconf.layersconf.input_layer}
+  - ${modelconf.layersconf.rescaling_layer}
+  - ${modelconf.layersconf.2Dconv_16f}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.2Dconv_32f}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.2Dconv_64f}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Flatten}
+  layer_list:
+    _target_: builtins.list
+    _args_:
+    - ${modelconf.layers}
+  model:
+    _target_: tensorflow.keras.models.Sequential
+    layers: ${modelconf.layer_list}
+input_shape:
+- 258
+- 258
+- 3
+input_shape_tuple:
+  _target_: builtins.tuple
+  _args_:
+  - ${input_shape}
