@@ -4,8 +4,10 @@ from hydra.utils import instantiate
 import tensorflow as tf
 from omegaconf import OmegaConf
 import pathlib
+import logging
 
 OmegaConf.register_new_resolver("eval", eval)
+log = logging.getLogger(__name__)
 
 @hydra.main(version_base = None, config_path="./config", config_name="config")
 def train_model(cfg):
@@ -29,7 +31,7 @@ def train_model(cfg):
     
     AUTOTUNE = tf.data.AUTOTUNE
 
-    train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
+    train_ds = train_ds.cache().shuffle(train_ds.cardinality()).prefetch(buffer_size=AUTOTUNE)
     val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 
     model.compile(optimizer= cfg.optimizer,
@@ -45,10 +47,20 @@ def train_model(cfg):
     
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
-
     loss = history.history['loss']
     val_loss = history.history['val_loss']
+    log.info(f"{acc}")
+    log.info(f"{loss}")
+    log.info(f"{val_acc}")
+    log.info(f"{val_loss}")
+    
+    # Convert the model.
+    #converter = tf.lite.TFLiteConverter.from_keras_model(model)
+    #tflite_model = converter.convert()
+
+    # Save the model.
+    #with open('model_sigmoid.tflite', 'wb') as f:
+    #f.write(tflite_model)
     
 if __name__ == "__main__":
     train_model()
-    
