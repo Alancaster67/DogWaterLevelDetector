@@ -1,3 +1,0 @@
-sweeper:
-  params:
-    modelconf.layersconf.Conv2D_1.filters: 5,10
