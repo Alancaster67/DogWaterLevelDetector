@@ -1,3 +1,6 @@
 sweeper:
   params:
+    modelconf: 3LayerConv,2LayerConv,1LayerConv
     modelconf.layersconf.Conv2D_1.filters: 5,10
+    modelconf.layersconf.Conv2D_2.filters: 5,10
+    modelconf.layersconf.Conv2D_3.filters: 5,10

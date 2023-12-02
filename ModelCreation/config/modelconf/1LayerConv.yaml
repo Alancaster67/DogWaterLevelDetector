@@ -1,0 +1,22 @@
+defaults:
+  - layersconf: layers
+  - regularizersconf: regularizers
+
+layers:
+  - ${modelconf.layersconf.input_layer}
+  - ${modelconf.layersconf.rescaling_layer}
+  - ${modelconf.layersconf.Conv2D_1}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Flatten}
+  - ${modelconf.layersconf.Dense128}
+  - ${modelconf.layersconf.Dropout}
+  - ${modelconf.layersconf.Out_layer}
+
+layer_list:
+  _target_: builtins.list
+  _args_:
+    - ${modelconf.layers}
+
+model:
+  _target_: tensorflow.keras.models.Sequential
+  layers: ${modelconf.layer_list}

@@ -10,23 +10,23 @@ rescaling_layer:
 Conv2D_1:
   _target_: tensorflow.keras.layers.Conv2D
   filters: 16
-  kernel_size: 3
+  kernel_size: 5
   padding: same
   activation: relu
   kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
   
 Conv2D_2:
   _target_: tensorflow.keras.layers.Conv2D
-  filters: 32
-  kernel_size: 3
+  filters: 8
+  kernel_size: 5
   padding: same
   activation: relu
   kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
   
 Conv2D_3:
   _target_: tensorflow.keras.layers.Conv2D
-  filters: 64
-  kernel_size: 3
+  filters: 8
+  kernel_size: 5
   padding: same
   activation: relu
   kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}

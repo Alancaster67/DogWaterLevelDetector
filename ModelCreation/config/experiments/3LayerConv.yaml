@@ -1,0 +1,16 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      modelconf: 3LayerConv
+      epochs: 10
+      batch_size: 32
+      modelconf.layersconf.Conv2D_1.filters: 8,16,32
+      modelconf.layersconf.Conv2D_2.filters: 8,16,32
+      modelconf.layersconf.Conv2D_3.filters: 8,16,32
+      modelconf.layersconf.Conv2D_1.kernel_size: 3,5
+      modelconf.layersconf.Conv2D_2.kernel_size: 3,5
+      modelconf.layersconf.Conv2D_3.kernel_size: 3,5
+      # modelconf.regularizersconf.L1L2_regularizer.l1: 0.0001,0.001,0.01,0.1
+      # modelconf.regularizersconf.L1L2_regularizer.l2: 0.0001,0.001,0.01,0.1
+      # modelconf.layersconf.Dropout.rate: 0,0.1,0.2,0.3,0.4,0.5

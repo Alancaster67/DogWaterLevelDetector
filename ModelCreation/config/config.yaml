@@ -1,6 +1,5 @@
 defaults:
   - modelconf: 3LayerConv
-  - hydra: hydra
   - dataconf: data
 
 epochs: 2

@@ -12,7 +12,6 @@ log = logging.getLogger(__name__)
 @hydra.main(version_base = None, config_path="./config", config_name="config")
 def train_model(cfg):
     model = instantiate(cfg.modelconf.model)
-    performance_metrics = instantiate(cfg.metrics_list)
     
     train_dir = pathlib.Path.cwd().parent / cfg.dataconf.train_dataset
     val_dir = pathlib.Path.cwd().parent / cfg.dataconf.validation_dataset
@@ -49,10 +48,10 @@ def train_model(cfg):
     val_acc = history.history['val_accuracy']
     loss = history.history['loss']
     val_loss = history.history['val_loss']
-    log.info(f"{acc}")
-    log.info(f"{loss}")
-    log.info(f"{val_acc}")
-    log.info(f"{val_loss}")
+    log.info(f"Train Accuracy: {acc}")
+    log.info(f"Train Loss: {loss}")
+    log.info(f"Validation Accuracy: {val_acc}")
+    log.info(f"Validation Loss: {val_loss}")
     
     # Convert the model.
     #converter = tf.lite.TFLiteConverter.from_keras_model(model)

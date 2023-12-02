@@ -5,3 +5,4 @@ ModelCreation/outputs/
 *.jpg
 /Data
 *.dvcignore
+*.bat

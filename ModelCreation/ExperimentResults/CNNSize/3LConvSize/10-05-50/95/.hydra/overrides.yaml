@@ -1,0 +1,9 @@
+- epochs=10
+- batch_size=32
+- modelconf.layersconf.Conv2D_1.filters=16
+- modelconf.layersconf.Conv2D_2.filters=8
+- modelconf.layersconf.Conv2D_3.filters=32
+- modelconf.layersconf.Conv2D_1.kernel_size=5
+- modelconf.layersconf.Conv2D_2.kernel_size=5
+- modelconf.layersconf.Conv2D_3.kernel_size=5
+- +experiments=3LayerConv
