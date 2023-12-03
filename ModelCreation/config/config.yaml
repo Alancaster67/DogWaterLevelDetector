@@ -3,7 +3,7 @@ defaults:
   - dataconf: data
 
 epochs: 2
-batch_size: 32
+batch_size: 6
 optimizer: adam
 loss:
   _target_: tensorflow.keras.losses.SparseCategoricalCrossentropy

@@ -1,0 +1,3 @@
+- batch_size=9
+- epochs=10
+- +experiments=3LayerConv_BatchSize
