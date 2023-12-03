@@ -33,7 +33,7 @@ def train_model(cfg):
     train_ds = train_ds.cache().shuffle(train_ds.cardinality()).prefetch(buffer_size=AUTOTUNE)
     val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 
-    model.compile(optimizer= cfg.optimizer,
+    model.compile(optimizer= instantiate(cfg.optimizer),
               loss=instantiate(cfg.loss),
               metrics=instantiate(cfg.metrics_list))
     

@@ -4,7 +4,14 @@ defaults:
 
 epochs: 2
 batch_size: 6
-optimizer: adam
+optimizer:
+  _target_: tensorflow.keras.optimizers.Adam
+  learning_rate: 0.001
+  beta_1: 0.9
+  beta_2: 0.999
+  epsilon: 0.0000001
+
+
 loss:
   _target_: tensorflow.keras.losses.SparseCategoricalCrossentropy
   from_logits: False
