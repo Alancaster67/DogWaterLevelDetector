@@ -1,0 +1,6 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      batch_size: 30
+      optimizer.learning_rate: range(0.00405,0.00805, 0.0005)

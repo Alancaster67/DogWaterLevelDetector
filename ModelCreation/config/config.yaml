@@ -3,10 +3,10 @@ defaults:
   - dataconf: data
 
 epochs: 2
-batch_size: 6
+batch_size: 24
 optimizer:
   _target_: tensorflow.keras.optimizers.Adam
-  learning_rate: 0.001
+  learning_rate: 0.00455
   beta_1: 0.9
   beta_2: 0.999
   epsilon: 0.0000001
