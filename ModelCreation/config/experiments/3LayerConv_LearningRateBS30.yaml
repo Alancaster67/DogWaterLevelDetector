@@ -3,4 +3,6 @@ hydra:
   sweeper:
     params:
       batch_size: 30
-      optimizer.learning_rate: range(0.00405,0.00805, 0.0005)
+      modelconf.regularizersconf.L1L2_regularizer.l1: 0
+      modelconf.regularizersconf.L1L2_regularizer.l2: 0
+      optimizer.learning_rate: range(0.0001,0.1001, 0.0005)

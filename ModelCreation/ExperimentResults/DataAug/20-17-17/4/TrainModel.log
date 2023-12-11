@@ -1,0 +1,14 @@
+[2023-12-07 20:27:19,073][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-07 20:27:19,102][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:27:19,134][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:27:19,163][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-07 20:27:19,437][tensorflow][WARNING] - Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+[2023-12-07 20:27:19,829][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-07 20:27:19,859][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:27:19,903][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:27:19,943][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-07 20:27:20,184][tensorflow][WARNING] - Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+[2023-12-07 20:29:46,307][__main__][INFO] - Train Accuracy: [0.8093494176864624, 0.9782421588897705, 0.9931064248085022, 0.9984920024871826, 0.9997845888137817, 0.9928910136222839, 0.9903059005737305, 0.9995691776275635, 0.9991382956504822, 0.9997845888137817]
+[2023-12-07 20:29:46,308][__main__][INFO] - Train Loss: [0.47582951188087463, 0.08286619931459427, 0.03897631913423538, 0.024284450337290764, 0.016255181282758713, 0.03318396210670471, 0.04643616825342178, 0.013581312261521816, 0.013064785860478878, 0.010402414947748184]
+[2023-12-07 20:29:46,308][__main__][INFO] - Validation Accuracy: [0.5857452750205994, 0.7279305458068848, 0.7036902904510498, 0.7091172337532043, 0.7514472007751465, 0.75, 0.6711288094520569, 0.7051374912261963, 0.7203328609466553, 0.7550651431083679]
+[2023-12-07 20:29:46,308][__main__][INFO] - Validation Loss: [1.571864128112793, 1.3539035320281982, 1.6354647874832153, 2.2423131465911865, 1.7705910205841064, 1.8557348251342773, 2.1152236461639404, 1.9820713996887207, 2.2692553997039795, 2.5931718349456787]

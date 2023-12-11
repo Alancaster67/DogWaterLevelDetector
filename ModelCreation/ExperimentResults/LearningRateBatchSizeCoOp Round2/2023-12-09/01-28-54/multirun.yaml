@@ -1,0 +1,270 @@
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+  launcher:
+    _target_: hydra._internal.core_plugins.basic_launcher.BasicLauncher
+  sweeper:
+    _target_: hydra._internal.core_plugins.basic_sweeper.BasicSweeper
+    max_batch_size: null
+    params:
+      batch_size: '36'
+      modelconf.regularizersconf.L1L2_regularizer.l1: '0'
+      modelconf.regularizersconf.L1L2_regularizer.l2: '0'
+      optimizer.learning_rate: range(0.0001,0.1001, 0.0005)
+  help:
+    app_name: ${hydra.job.name}
+    header: '${hydra.help.app_name} is powered by Hydra.
+
+      '
+    footer: 'Powered by Hydra (https://hydra.cc)
+
+      Use --hydra-help to view Hydra specific help
+
+      '
+    template: '${hydra.help.header}
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (group=option)
+
+
+      $APP_CONFIG_GROUPS
+
+
+      == Config ==
+
+      Override anything in the config (foo.bar=value)
+
+
+      $CONFIG
+
+
+      ${hydra.help.footer}
+
+      '
+  hydra_help:
+    template: 'Hydra (${hydra.runtime.version})
+
+      See https://hydra.cc for more info.
+
+
+      == Flags ==
+
+      $FLAGS_HELP
+
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (For example, append hydra/job_logging=disabled
+      to command line)
+
+
+      $HYDRA_CONFIG_GROUPS
+
+
+      Use ''--cfg hydra'' to Show the Hydra config.
+
+      '
+    hydra_help: ???
+  hydra_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][HYDRA] %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+    root:
+      level: INFO
+      handlers:
+      - console
+    loggers:
+      logging_example:
+        level: DEBUG
+    disable_existing_loggers: false
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.runtime.output_dir}/${hydra.job.name}.log
+    root:
+      level: INFO
+      handlers:
+      - console
+      - file
+    disable_existing_loggers: false
+  env: {}
+  mode: MULTIRUN
+  searchpath: []
+  callbacks: {}
+  output_subdir: .hydra
+  overrides:
+    hydra:
+    - hydra.mode=MULTIRUN
+    task:
+    - epochs=15
+    - +experiments=3LayerConv_LearningRateBS36
+  job:
+    name: TrainModel
+    chdir: null
+    override_dirname: +experiments=3LayerConv_LearningRateBS36,epochs=15
+    id: ???
+    num: ???
+    config_name: config
+    env_set: {}
+    env_copy: []
+    config:
+      override_dirname:
+        kv_sep: '='
+        item_sep: ','
+        exclude_keys: []
+  runtime:
+    version: 1.3.2
+    version_base: '1.3'
+    cwd: C:\Users\alanc\OneDrive\Documents\Python Projects\DogWaterLevelDetector\ModelCreation
+    config_sources:
+    - path: hydra.conf
+      schema: pkg
+      provider: hydra
+    - path: C:\Users\alanc\OneDrive\Documents\Python Projects\DogWaterLevelDetector\ModelCreation\config
+      schema: file
+      provider: main
+    - path: ''
+      schema: structured
+      provider: schema
+    output_dir: ???
+    choices:
+      experiments: 3LayerConv_LearningRateBS36
+      dataconf: data
+      modelconf: 3LayerConv
+      modelconf/regularizersconf: regularizers
+      modelconf/layersconf: layers
+      hydra/env: default
+      hydra/callbacks: null
+      hydra/job_logging: default
+      hydra/hydra_logging: default
+      hydra/hydra_help: default
+      hydra/help: default
+      hydra/sweeper: basic
+      hydra/launcher: basic
+      hydra/output: default
+  verbose: false
+modelconf:
+  layersconf:
+    input_layer:
+      _target_: tensorflow.keras.layers.InputLayer
+      input_shape: ${dataconf.input_shape_tuple}
+      dtype: uint8
+    rescaling_layer:
+      _target_: tensorflow.keras.layers.Rescaling
+      scale: ${eval:'1/255'}
+    Random_Flip:
+      _target_: tensorflow.keras.layers.RandomFlip
+      mode: horizontal_and_vertical
+    Random_Rotation:
+      _target_: tensorflow.keras.layers.RandomRotation
+      factor: 0.2
+    Conv2D_1:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 16
+      kernel_size: 5
+      padding: same
+      activation: relu
+      kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
+    Conv2D_2:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 8
+      kernel_size: 5
+      padding: same
+      activation: relu
+      kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
+    Conv2D_3:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 8
+      kernel_size: 5
+      padding: same
+      activation: relu
+      kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
+    Flatten:
+      _target_: tensorflow.keras.layers.Flatten
+    MaxPooling2D:
+      _target_: tensorflow.keras.layers.MaxPooling2D
+    Dense128:
+      _target_: tensorflow.keras.layers.Dense
+      units: 128
+      activation: relu
+    Dropout:
+      _target_: tensorflow.keras.layers.Dropout
+      rate: 0.0
+    Out_layer:
+      _target_: tensorflow.keras.layers.Dense
+      units: 2
+      activation: sigmoid
+  regularizersconf:
+    L1L2_regularizer:
+      _target_: tensorflow.keras.regularizers.L1L2
+      l1: 0.0001
+      l2: 0.001
+  layers:
+  - ${modelconf.layersconf.input_layer}
+  - ${modelconf.layersconf.rescaling_layer}
+  - ${modelconf.layersconf.Conv2D_1}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Conv2D_2}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Conv2D_3}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Flatten}
+  - ${modelconf.layersconf.Dense128}
+  - ${modelconf.layersconf.Dropout}
+  - ${modelconf.layersconf.Out_layer}
+  layer_list:
+    _target_: builtins.list
+    _args_:
+    - ${modelconf.layers}
+  model:
+    _target_: tensorflow.keras.models.Sequential
+    layers: ${modelconf.layer_list}
+dataconf:
+  train_dataset: Data\Train
+  validation_dataset: Data\Validation
+  num_classes: 2
+  input_shape:
+  - 258
+  - 258
+  - 3
+  input_shape_tuple:
+    _target_: builtins.tuple
+    _args_:
+    - ${dataconf.input_shape}
+epochs: 15
+batch_size: 24
+optimizer:
+  _target_: tensorflow.keras.optimizers.Adam
+  learning_rate: 0.00455
+  beta_1: 0.9
+  beta_2: 0.999
+  epsilon: 1.0e-07
+loss:
+  _target_: tensorflow.keras.losses.SparseCategoricalCrossentropy
+  from_logits: false
+metrics:
+- accuracy
+metrics_list:
+  _target_: builtins.list
+  _args_:
+  - ${metrics}

@@ -1,0 +1,19 @@
+[2023-12-07 20:17:19,711][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-07 20:17:19,733][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:17:19,758][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:17:19,777][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-07 20:17:20,001][tensorflow][WARNING] - Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+[2023-12-07 20:17:21,243][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-07 20:17:21,271][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:17:21,302][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:17:21,325][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-07 20:17:21,568][tensorflow][WARNING] - Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+[2023-12-07 20:17:21,974][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-07 20:17:22,002][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:17:22,034][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-07 20:17:22,058][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-07 20:17:22,299][tensorflow][WARNING] - Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+[2023-12-07 20:19:51,052][__main__][INFO] - Train Accuracy: [0.6744937300682068, 0.6813873052597046, 0.6813873052597046, 0.6813873052597046, 0.6818181872367859, 0.6813873052597046, 0.6813873052597046, 0.6813873052597046, 0.6813873052597046, 0.6813873052597046]
+[2023-12-07 20:19:51,053][__main__][INFO] - Train Loss: [0.6934847831726074, 0.6487328410148621, 0.643838107585907, 0.6408560872077942, 0.6342082619667053, 0.6392876505851746, 0.6380721926689148, 0.6361178159713745, 0.6356204748153687, 0.6339927315711975]
+[2023-12-07 20:19:51,053][__main__][INFO] - Validation Accuracy: [0.5340086817741394, 0.5340086817741394, 0.5340086817741394, 0.5340086817741394, 0.5340086817741394, 0.5340086817741394, 0.5340086817741394, 0.5340086817741394, 0.5340086817741394, 0.5340086817741394]
+[2023-12-07 20:19:51,053][__main__][INFO] - Validation Loss: [0.7628016471862793, 0.7674196362495422, 0.7587395906448364, 0.75579434633255, 0.7581169605255127, 0.7287169098854065, 0.7439137697219849, 0.7288285493850708, 0.7488397359848022, 0.7544674873352051]

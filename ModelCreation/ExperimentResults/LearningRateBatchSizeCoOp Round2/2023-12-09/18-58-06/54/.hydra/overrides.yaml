@@ -1,0 +1,6 @@
+- batch_size=2
+- modelconf.regularizersconf.L1L2_regularizer.l1=0
+- modelconf.regularizersconf.L1L2_regularizer.l2=0
+- optimizer.learning_rate=0.0516
+- epochs=10
+- +experiments=3LayerConv_LearningRateBS2
