@@ -5,7 +5,8 @@ defaults:
 layers:
   - ${modelconf.layersconf.input_layer}
   - ${modelconf.layersconf.Random_Flip}
-  - ${modelconf.layersconf.Random_Rotation}
+  - ${modelconf.layersconf.Random_Brightness}
+  - ${modelconf.layersconf.Random_Contrast}
   - ${modelconf.layersconf.rescaling_layer}
   - ${modelconf.layersconf.Conv2D_1}
   - ${modelconf.layersconf.MaxPooling2D}

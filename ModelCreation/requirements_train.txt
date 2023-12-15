@@ -58,7 +58,7 @@ gast==0.4.0
 gitdb==4.0.11
 GitPython==3.1.40
 google-auth==2.23.3
-google-auth-oauthlib==1.0.0
+google-auth-oauthlib<0.5,>=0.4.1
 google-pasta==0.2.0
 grandalf==0.8
 grpcio==1.59.0
@@ -102,7 +102,7 @@ pickleshare==0.7.5
 Pillow==10.1.0
 platformdirs==3.11.0
 prompt-toolkit==3.0.39
-protobuf==3.20.0
+protobuf<3.20,>=3.9.2
 psutil==5.9.6
 pure-eval==0.2.2
 pyasn1==0.5.0
@@ -136,13 +136,9 @@ sqltrie==0.8.0
 stack-data==0.6.3
 sympy==1.12
 tabulate==0.9.0
-tensorboard==2.14.1
-tensorboard-data-server==0.7.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.14.0
-tensorflow-estimator==2.14.0
+tensorflow==2.10.0
+tensorflow-estimator<2.11,>=2.10.0
 tensorflow-gpu==2.10.0
-tensorflow-intel==2.14.0
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.3.0
 tomlkit==0.12.3
@@ -156,7 +152,7 @@ tzdata==2023.3
 urllib3==2.0.7
 vine==5.1.0
 voluptuous==0.14.1
-wcwidth==0.2.8
+wcwidth==0.2.8x
 Werkzeug==3.0.0
 wrapt==1.14.1
 yarl==1.9.3

@@ -1,0 +1,4 @@
+- batch_size=2
+- optimizer.learning_rate=1e-05
+- epochs=10
+- +experiments=3LayerConv_LearningRateBS2

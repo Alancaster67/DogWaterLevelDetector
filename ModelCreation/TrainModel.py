@@ -11,7 +11,6 @@ log = logging.getLogger(__name__)
 
 @hydra.main(version_base = None, config_path="./config", config_name="config")
 def train_model(cfg):
-    model = instantiate(cfg.modelconf.model)
     
     train_dir = pathlib.Path.cwd().parent / cfg.dataconf.train_dataset
     val_dir = pathlib.Path.cwd().parent / cfg.dataconf.validation_dataset
@@ -28,14 +27,16 @@ def train_model(cfg):
         image_size=(cfg.dataconf.input_shape[0], cfg.dataconf.input_shape[1]),
         batch_size=cfg.batch_size)
     
+    
+    model = instantiate(cfg.modelconf.model)
     AUTOTUNE = tf.data.AUTOTUNE
 
     train_ds = train_ds.cache().shuffle(train_ds.cardinality()).prefetch(buffer_size=AUTOTUNE)
     val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 
     model.compile(optimizer= instantiate(cfg.optimizer),
-              loss=instantiate(cfg.loss),
-              metrics=instantiate(cfg.metrics_list))
+            loss=instantiate(cfg.loss),
+            metrics=instantiate(cfg.metrics_list))
     
     
     history = model.fit(

@@ -3,14 +3,14 @@ defaults:
   - dataconf: data
 
 epochs: 2
-batch_size: 6
+batch_size: 18
+
 optimizer:
   _target_: tensorflow.keras.optimizers.Adam
-  learning_rate: 0.001
+  learning_rate: 0.0011
   beta_1: 0.9
   beta_2: 0.999
   epsilon: 0.0000001
-
 
 loss:
   _target_: tensorflow.keras.losses.SparseCategoricalCrossentropy

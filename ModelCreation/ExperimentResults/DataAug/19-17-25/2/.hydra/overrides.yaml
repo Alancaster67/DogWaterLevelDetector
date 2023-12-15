@@ -1,0 +1,5 @@
+- modelconf=3LayerConv_data_aug
+- modelconf.layersconf.Random_Flip.mode=vertical
+- modelconf.layersconf.Random_Rotation.factor=0.0
+- epochs=10
+- +experiments=DataAug

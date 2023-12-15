@@ -15,6 +15,14 @@ Random_Rotation:
   _target_: tensorflow.keras.layers.RandomRotation
   factor: 0.2
 
+Random_Brightness:
+  _target_: tensorflow.keras.layers.RandomBrightness
+  factor: 0.2
+
+Random_Contrast:
+  _target_: tensorflow.keras.layers.RandomContrast
+  factor: 0.2
+
 Conv2D_1:
   _target_: tensorflow.keras.layers.Conv2D
   filters: 16
@@ -52,7 +60,7 @@ Dense128:
 
 Dropout:
   _target_: tensorflow.keras.layers.Dropout
-  rate: 0
+  rate: 0.0
 
 Out_layer:
   _target_: tensorflow.keras.layers.Dense

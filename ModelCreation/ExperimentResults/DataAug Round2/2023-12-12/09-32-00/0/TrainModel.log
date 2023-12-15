@@ -1,0 +1,37 @@
+[2023-12-12 09:32:05,935][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-12 09:32:05,955][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:05,977][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:05,994][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:06,137][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-12 09:32:06,157][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:06,181][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:06,199][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformFullIntV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:06,231][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomGetKeyCounter cause there is no registered converter for this op.
+[2023-12-12 09:32:06,253][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:06,307][tensorflow][WARNING] - Using a while_loop for converting AdjustContrastv2 cause Input "contrast_factor" of op 'AdjustContrastv2' expected to be loop invariant.
+[2023-12-12 09:32:06,546][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-12 09:32:06,571][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:06,599][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:06,623][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:06,770][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-12 09:32:06,795][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:06,824][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:06,848][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformFullIntV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:06,888][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomGetKeyCounter cause there is no registered converter for this op.
+[2023-12-12 09:32:06,995][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:07,060][tensorflow][WARNING] - Using a while_loop for converting AdjustContrastv2 cause Input "contrast_factor" of op 'AdjustContrastv2' expected to be loop invariant.
+[2023-12-12 09:32:07,410][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-12 09:32:07,434][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:07,462][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:07,485][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:07,630][tensorflow][WARNING] - Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+[2023-12-12 09:32:07,656][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:07,684][tensorflow][WARNING] - Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+[2023-12-12 09:32:07,708][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformFullIntV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:07,747][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomGetKeyCounter cause there is no registered converter for this op.
+[2023-12-12 09:32:07,776][tensorflow][WARNING] - Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+[2023-12-12 09:32:07,840][tensorflow][WARNING] - Using a while_loop for converting AdjustContrastv2 cause Input "contrast_factor" of op 'AdjustContrastv2' expected to be loop invariant.
+[2023-12-12 09:41:02,223][__main__][INFO] - Train Accuracy: [0.8937957882881165, 0.9857819676399231, 0.9974148869514465, 0.9980611801147461, 0.9991382956504822, 0.9937527179718018, 0.9982765913009644, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9913830161094666, 0.9963377714157104, 1.0, 1.0, 1.0, 1.0]
+[2023-12-12 09:41:02,224][__main__][INFO] - Train Loss: [0.29409459233283997, 0.07166798412799835, 0.036186859011650085, 0.03295350819826126, 0.027614710852503777, 0.03885766491293907, 0.027694374322891235, 0.020149825140833855, 0.018358105793595314, 0.016664188355207443, 0.015004131011664867, 0.01343987975269556, 0.011995017528533936, 0.01064243633300066, 0.034205663949251175, 0.02363414503633976, 0.010846706107258797, 0.009671257808804512, 0.008702411316335201, 0.00783077534288168]
+[2023-12-12 09:41:02,224][__main__][INFO] - Validation Accuracy: [0.5050651431083679, 0.4659913182258606, 0.472141832113266, 0.4819102883338928, 0.46816208958625793, 0.47178003191947937, 0.47431260347366333, 0.47141823172569275, 0.46816208958625793, 0.4659913182258606, 0.4612879753112793, 0.46345874667167664, 0.46671491861343384, 0.46707668900489807, 0.6454414129257202, 0.568740963935852, 0.5680173635482788, 0.5676555633544922, 0.555716335773468, 0.5477568507194519]
+[2023-12-12 09:41:02,224][__main__][INFO] - Validation Loss: [1.7883380651474, 3.7470004558563232, 4.39329195022583, 3.180593729019165, 7.779277801513672, 6.710265636444092, 4.878256320953369, 4.643975734710693, 4.720668792724609, 4.739963531494141, 4.806115627288818, 4.670462608337402, 4.884366035461426, 4.966510772705078, 1.1169037818908691, 3.557823419570923, 3.587474822998047, 3.4972567558288574, 3.5393550395965576, 3.5297954082489014]

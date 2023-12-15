@@ -1,0 +1,8 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      modelconf: 3LayerConv_data_aug
+      modelconf.layersconf.Random_Flip.mode: vertical
+      modelconf.layersconf.Random_Brightness.factor: range(0.0,0.4,0.1)
+      modelconf.layersconf.Random_Contrast.factor: range(0.0,0.4,0.1)
