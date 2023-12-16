@@ -13,15 +13,15 @@ Random_Flip:
 
 Random_Rotation:
   _target_: tensorflow.keras.layers.RandomRotation
-  factor: 0.2
+  factor: 0.0
 
 Random_Brightness:
   _target_: tensorflow.keras.layers.RandomBrightness
-  factor: 0.2
+  factor: 0.1
 
 Random_Contrast:
   _target_: tensorflow.keras.layers.RandomContrast
-  factor: 0.2
+  factor: 0.3
 
 Conv2D_1:
   _target_: tensorflow.keras.layers.Conv2D

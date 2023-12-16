@@ -1,0 +1,6 @@
+- modelconf=3LayerConv_data_aug
+- modelconf.layersconf.Random_Flip.mode=vertical
+- modelconf.layersconf.Random_Brightness.factor=0.3
+- modelconf.layersconf.Random_Contrast.factor=0.0
+- epochs=20
+- +experiments=DataAug

@@ -1,5 +1,5 @@
 defaults:
-  - modelconf: 3LayerConv
+  - modelconf: 3LayerConv_data_aug
   - dataconf: data
 
 epochs: 2

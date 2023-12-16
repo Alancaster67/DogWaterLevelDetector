@@ -1,4 +1,3 @@
-#! C:\Users\alanc\OneDrive\Documents\Python Projects\DogWaterLevelDetector\ModelCreation\venv\Scripts\python.exe
 import hydra
 from hydra.utils import instantiate
 import tensorflow as tf
