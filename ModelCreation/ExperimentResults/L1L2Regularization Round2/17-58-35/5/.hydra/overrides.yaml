@@ -1,0 +1,4 @@
+- epochs=20
+- modelconf.regularizersconf.L1L2_regularizer.l1=0
+- modelconf.regularizersconf.L1L2_regularizer.l2=1e-05
+- +experiments=L1L2Reg
