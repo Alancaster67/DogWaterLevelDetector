@@ -3,4 +3,4 @@ hydra:
   sweeper:
     params:
       epochs: 20
-      modelconf.layersconf.Dropout.rate: range(0.0,0.75,0.05)
+      modelconf.layersconf.Dropout.rate: range(0.00,0.75,0.05)

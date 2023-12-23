@@ -60,7 +60,7 @@ Dense128:
 
 Dropout:
   _target_: tensorflow.keras.layers.Dropout
-  rate: 0.0
+  rate: 0.6
 
 Out_layer:
   _target_: tensorflow.keras.layers.Dense

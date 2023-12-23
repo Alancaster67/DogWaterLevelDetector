@@ -1,0 +1,3 @@
+- optimizer.weight_decay=null
+- epochs=40
+- +experiments=WeightDecay

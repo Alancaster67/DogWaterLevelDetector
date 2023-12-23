@@ -1,0 +1,3 @@
+- epochs=20
+- modelconf.layersconf.Dropout.rate=0.30000000000000004
+- +experiments=Dropout
