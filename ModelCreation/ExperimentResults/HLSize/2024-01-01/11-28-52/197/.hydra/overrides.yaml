@@ -1,0 +1,9 @@
+- modelconf=3LayerConv_3HL
+- modelconf.layersconf.Dense1.units=50
+- modelconf.layersconf.Dropout1.rate=0.6
+- modelconf.layersconf.Dense2.units=150
+- modelconf.layersconf.Dropout2.rate=0.4
+- modelconf.layersconf.Dense3.units=250
+- modelconf.layersconf.Dropout3.rate=0.6
+- epochs=20
+- +experiments=HLSize3

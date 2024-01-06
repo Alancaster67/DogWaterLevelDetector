@@ -1,0 +1,5 @@
+- modelconf=3LayerConv
+- modelconf.layersconf.Dense1.units=250
+- modelconf.layersconf.Dropout1.rate=0.5
+- epochs=20
+- +experiments=HLSize1

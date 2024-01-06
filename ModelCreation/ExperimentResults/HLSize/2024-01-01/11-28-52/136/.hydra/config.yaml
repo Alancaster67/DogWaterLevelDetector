@@ -1,0 +1,135 @@
+modelconf:
+  layersconf:
+    input_layer:
+      _target_: tensorflow.keras.layers.InputLayer
+      input_shape: ${dataconf.input_shape_tuple}
+      dtype: uint8
+    rescaling_layer:
+      _target_: tensorflow.keras.layers.Rescaling
+      scale: ${eval:'1/255'}
+    BatchNorm:
+      _target_: tensorflow.keras.layers.BatchNormalization
+    Random_Flip:
+      _target_: tensorflow.keras.layers.RandomFlip
+      mode: horizontal_and_vertical
+    Random_Rotation:
+      _target_: tensorflow.keras.layers.RandomRotation
+      factor: 0.0
+    Random_Brightness:
+      _target_: tensorflow.keras.layers.RandomBrightness
+      factor: 0.1
+    Random_Contrast:
+      _target_: tensorflow.keras.layers.RandomContrast
+      factor: 0.3
+    Conv2D_1:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 16
+      kernel_size: 5
+      padding: same
+      activation: relu
+      kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
+    Conv2D_2:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 8
+      kernel_size: 5
+      padding: same
+      activation: relu
+      kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
+    Conv2D_3:
+      _target_: tensorflow.keras.layers.Conv2D
+      filters: 8
+      kernel_size: 5
+      padding: same
+      activation: relu
+      kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer}
+    Flatten:
+      _target_: tensorflow.keras.layers.Flatten
+    MaxPooling2D:
+      _target_: tensorflow.keras.layers.MaxPooling2D
+    Dense1:
+      _target_: tensorflow.keras.layers.Dense
+      units: 50
+      activation: relu
+    Dense2:
+      _target_: tensorflow.keras.layers.Dense
+      units: 250
+      activation: relu
+    Dense3:
+      _target_: tensorflow.keras.layers.Dense
+      units: 50
+      activation: relu
+    Dropout1:
+      _target_: tensorflow.keras.layers.Dropout
+      rate: 0.5
+    Dropout2:
+      _target_: tensorflow.keras.layers.Dropout
+      rate: 0.4
+    Dropout3:
+      _target_: tensorflow.keras.layers.Dropout
+      rate: 0.5
+    Out_layer:
+      _target_: tensorflow.keras.layers.Dense
+      units: 2
+      activation: sigmoid
+  regularizersconf:
+    L1L2_regularizer:
+      _target_: tensorflow.keras.regularizers.L1L2
+      l1: 0
+      l2: 0.003
+  layers:
+  - ${modelconf.layersconf.input_layer}
+  - ${modelconf.layersconf.Random_Flip}
+  - ${modelconf.layersconf.Random_Brightness}
+  - ${modelconf.layersconf.Random_Contrast}
+  - ${modelconf.layersconf.rescaling_layer}
+  - ${modelconf.layersconf.Conv2D_1}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Conv2D_2}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Conv2D_3}
+  - ${modelconf.layersconf.MaxPooling2D}
+  - ${modelconf.layersconf.Flatten}
+  - ${modelconf.layersconf.Dense1}
+  - ${modelconf.layersconf.Dropout1}
+  - ${modelconf.layersconf.Dense2}
+  - ${modelconf.layersconf.Dropout2}
+  - ${modelconf.layersconf.Dense3}
+  - ${modelconf.layersconf.Dropout3}
+  - ${modelconf.layersconf.Out_layer}
+  layer_list:
+    _target_: builtins.list
+    _args_:
+    - ${modelconf.layers}
+  model:
+    _target_: tensorflow.keras.models.Sequential
+    layers: ${modelconf.layer_list}
+dataconf:
+  train_dataset: Data/Train
+  validation_dataset: Data/Validation
+  num_classes: 2
+  input_shape:
+  - 258
+  - 258
+  - 3
+  input_shape_tuple:
+    _target_: builtins.tuple
+    _args_:
+    - ${dataconf.input_shape}
+epochs: 20
+batch_size: 18
+optimizer:
+  _target_: tensorflow.keras.optimizers.Adam
+  learning_rate: 0.0011
+  weight_decay: null
+  beta_1: 0.9
+  beta_2: 0.999
+  epsilon: 1.0e-07
+loss:
+  _target_: tensorflow.keras.losses.SparseCategoricalCrossentropy
+  from_logits: false
+metrics:
+- accuracy
+metrics_list:
+  _target_: builtins.list
+  _args_:
+  - ${metrics}

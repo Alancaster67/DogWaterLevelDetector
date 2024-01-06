@@ -15,8 +15,8 @@ layers:
   - ${modelconf.layersconf.Conv2D_3}
   - ${modelconf.layersconf.MaxPooling2D}
   - ${modelconf.layersconf.Flatten}
-  - ${modelconf.layersconf.Dense128}
-  - ${modelconf.layersconf.Dropout}
+  - ${modelconf.layersconf.Dense1}
+  - ${modelconf.layersconf.Dropout1}
   - ${modelconf.layersconf.Out_layer}
 
 layer_list:

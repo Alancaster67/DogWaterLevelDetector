@@ -1,0 +1,4 @@
+- modelconf=3LayerConv
+- modelconf.layersconf.Dropout.rate=0.45
+- epochs=40
+- +experiments=BatchNorm

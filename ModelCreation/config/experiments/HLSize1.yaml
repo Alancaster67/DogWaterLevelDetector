@@ -1,0 +1,7 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      modelconf: 3LayerConv
+      modelconf.layersconf.Dense1.units: range(50,350,100)
+      modelconf.layersconf.Dropout1.rate: range(0.40,0.7,0.1)

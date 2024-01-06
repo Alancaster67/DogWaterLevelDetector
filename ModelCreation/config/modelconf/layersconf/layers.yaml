@@ -7,6 +7,9 @@ rescaling_layer:
   _target_: tensorflow.keras.layers.Rescaling
   scale: ${eval:'1/255'}
 
+BatchNorm:
+  _target_: tensorflow.keras.layers.BatchNormalization
+
 Random_Flip:
   _target_: tensorflow.keras.layers.RandomFlip
   mode: horizontal_and_vertical
@@ -53,12 +56,30 @@ Flatten:
 MaxPooling2D:
   _target_: tensorflow.keras.layers.MaxPooling2D
 
-Dense128:
+Dense1:
   _target_: tensorflow.keras.layers.Dense
   units: 128
   activation: relu
 
-Dropout:
+Dense2:
+  _target_: tensorflow.keras.layers.Dense
+  units: 128
+  activation: relu
+
+Dense3:
+  _target_: tensorflow.keras.layers.Dense
+  units: 128
+  activation: relu
+
+Dropout1:
+  _target_: tensorflow.keras.layers.Dropout
+  rate: 0.6
+
+Dropout2:
+  _target_: tensorflow.keras.layers.Dropout
+  rate: 0.6
+
+Dropout3:
   _target_: tensorflow.keras.layers.Dropout
   rate: 0.6
 

@@ -4,15 +4,26 @@ import tensorflow as tf
 from omegaconf import OmegaConf
 import pathlib
 import logging
+import multiprocessing
+import datetime
 
 OmegaConf.register_new_resolver("eval", eval)
 log = logging.getLogger(__name__)
 
 @hydra.main(version_base = None, config_path="./config", config_name="config")
+def main(cfg):
+    #print(len([cfg]))
+    p = multiprocessing.Process(target=train_model, args=[cfg])
+    p.start()
+    p.join()
+    
 def train_model(cfg):
     
     train_dir = pathlib.Path.cwd().parent / cfg.dataconf.train_dataset
     val_dir = pathlib.Path.cwd().parent / cfg.dataconf.validation_dataset
+    
+    #log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    #tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     
     train_ds = tf.keras.utils.image_dataset_from_directory(
         train_dir,
@@ -25,7 +36,6 @@ def train_model(cfg):
         label_mode = 'binary',
         image_size=(cfg.dataconf.input_shape[0], cfg.dataconf.input_shape[1]),
         batch_size=cfg.batch_size)
-    
     
     model = instantiate(cfg.modelconf.model)
     AUTOTUNE = tf.data.AUTOTUNE
@@ -41,7 +51,8 @@ def train_model(cfg):
     history = model.fit(
     train_ds,
     validation_data=val_ds,
-    epochs=cfg.epochs
+    epochs=cfg.epochs,
+    #callbacks = [tensorboard_callback]
     )
     
     acc = history.history['accuracy']
@@ -60,6 +71,6 @@ def train_model(cfg):
     # Save the model.
     #with open('model_sigmoid.tflite', 'wb') as f:
     #f.write(tflite_model)
-    
+       
 if __name__ == "__main__":
-    train_model()
+    main()
