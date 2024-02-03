@@ -1,6 +1,0 @@
-# @package _global_
-hydra:
-  sweeper:
-    params:
-      modelconf: 3LayerConv, 3LayerConv_BatchNorm1, 3LayerConv_BatchNorm2, 3LayerConv_BatchNorm3, 3LayerConv_BatchNorm4, 3LayerConv_BatchNorm5
-      modelconf.layersconf.Dropout.rate: range(0.45,0.75,0.05)

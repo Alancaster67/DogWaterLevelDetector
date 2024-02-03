@@ -1,9 +1,0 @@
-# @package _global_
-hydra:
-  sweeper:
-    params:
-      modelconf: 1LayerConv
-      epochs: 10
-      batch_size: 32
-      modelconf.layersconf.Conv2D_1.filters: 8,16,32
-      modelconf.layersconf.Conv2D_1.kernel_size: 3,5

@@ -15,7 +15,7 @@ import copy
 OmegaConf.register_new_resolver("eval", eval)
 log = logging.getLogger(__name__)
 
-@hydra.main(version_base = None, config_path="./config", config_name="config")
+@hydra.main(version_base = None, config_path="./RandomSearchConfig", config_name="config")
 def main(cfg):
     
     def build_model(cfg):

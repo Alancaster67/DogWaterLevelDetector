@@ -12,7 +12,7 @@ from statistics import median
 OmegaConf.register_new_resolver("eval", eval)
 
 def read_conf():
-    with initialize(version_base=None, config_path= "./optunaconfig"):
+    with initialize(version_base=None, config_path= "./OptunaTunerConfig"):
         cfg = compose(config_name="config")
         OmegaConf.resolve(cfg)
         cfg = cfg.finalconf
@@ -213,7 +213,7 @@ def main(trial):
     return opti_metric
 
 if __name__ == "__main__":
-    with initialize(version_base=None, config_path= "./optunaconfig/optunaconf"):
+    with initialize(version_base=None, config_path= "./OptunaTunerConfig/optunaconf"):
         opt_cfg = compose(config_name="optuna")
     
     pruner = None

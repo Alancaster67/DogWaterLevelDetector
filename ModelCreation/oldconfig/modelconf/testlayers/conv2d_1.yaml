@@ -1,9 +1,0 @@
-Conv2D_1:
-  obj:
-    _target_: tensorflow.keras.layers.Conv2D
-    _partial_: true
-  params:
-    filters: 16
-    kernel_size: 5
-    padding: same
-    activation: relu

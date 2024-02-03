@@ -3,6 +3,7 @@
 #the OptunaCNN.py script is finished with necessary interpolations
 
 #Editing this file is will likely lead to errors running OptunaCNN.py
+
 defaults:
   - architectureconf: architecture
   - inputconf: input

@@ -1,3 +1,0 @@
-Random_Contrast:
-  _target_: tensorflow.keras.layers.RandomContrast
-  factor: 0.3

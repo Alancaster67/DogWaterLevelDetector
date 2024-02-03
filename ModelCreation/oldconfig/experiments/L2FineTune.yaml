@@ -1,7 +1,0 @@
-# @package _global_
-hydra:
-  sweeper:
-    params:
-      epochs: 50
-      modelconf.regularizersconf.L1L2_regularizer.l1: 0
-      modelconf.regularizersconf.L1L2_regularizer.l2: 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.01

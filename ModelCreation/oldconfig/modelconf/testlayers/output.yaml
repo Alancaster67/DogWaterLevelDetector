@@ -1,4 +1,0 @@
-Out_layer:
-  _target_: tensorflow.keras.layers.Dense
-  units: 2
-  activation: 'sigmoid'
