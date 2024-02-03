@@ -1,8 +1,13 @@
+*.vscode
 ModelCreation/venv/
 ModelCreation/multirun/
 ModelCreation/outputs/
+ModelCreation/venv/logs/
+ModelCreation/venv/ModelCheckpoints/
 .env
 *.jpg
 /Data
 *.dvcignore
 *.bat
+*.sh
+*.db

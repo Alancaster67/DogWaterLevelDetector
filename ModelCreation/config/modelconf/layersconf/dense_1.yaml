@@ -1,0 +1,4 @@
+Dense_1:
+  _target_: tensorflow.keras.layers.Dense
+  units: 128
+  activation: relu

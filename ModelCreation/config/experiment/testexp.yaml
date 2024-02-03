@@ -1,0 +1,34 @@
+defaults:
+  - domains: domains
+
+name: test experiment
+samples: 10
+replicates: 2
+
+metrics:
+  - accuracy
+
+params:
+  dataconf:
+    num_classes:
+    input_shape:
+
+hparams:
+  dataconf:
+    num_classes:
+      name: num_classes name
+      display_name: num_classes display name
+      description: This is the num_classes description
+      domain: ${experiment.domains.int_interval}
+      domain_args:
+        min_value: 1
+        max_value: 100
+    input_shape:
+      name: input_shape
+      display_name: input_shapedisplay name
+      description: This is the input_shape description
+      domain: ${experiment.domains.discrete}
+      domain_args:
+        values:
+          - value1
+          - value2

@@ -1,0 +1,3 @@
+Rescaling_Layer:
+  _target_: tensorflow.keras.layers.Rescaling
+  scale: ${eval:'1/255'}

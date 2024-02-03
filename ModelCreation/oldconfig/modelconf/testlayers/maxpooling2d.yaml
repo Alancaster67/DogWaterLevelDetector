@@ -1,0 +1,2 @@
+MaxPooling2D:
+  _target_: tensorflow.keras.layers.MaxPooling2D

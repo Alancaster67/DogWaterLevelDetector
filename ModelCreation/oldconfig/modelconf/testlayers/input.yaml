@@ -1,0 +1,4 @@
+input_layer:
+  _target_: tensorflow.keras.layers.InputLayer
+  input_shape: ${dataconf.input_shape_tuple}
+  dtype: uint8

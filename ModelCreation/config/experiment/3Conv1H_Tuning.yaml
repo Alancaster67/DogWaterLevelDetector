@@ -1,0 +1,361 @@
+defaults:
+  - domains: domains
+
+name: 3Conv1H_HPT
+samples: 200
+
+metrics:
+  - accuracy
+
+#Define the config path to the parmas to be sampled in the experiement
+params:
+  dataconf:
+    batch_size:
+  modelconf:
+    layersconf:
+      Random_Flip:
+        mode:
+      Random_Brightness:
+        factor:
+      Random_Contrast:
+        factor:
+      Conv2D_1:
+        filters:
+        kernel_size:
+        padding:
+#        activation:
+      Conv2D_2:
+        filters:
+        kernel_size:
+        padding:
+#        activation:
+      Conv2D_3:
+        filters:
+        kernel_size:
+        padding:
+#        activation:
+      Dense_1:
+        units:
+        activation:
+      Dropout_1:
+        rate:
+    regularizersconf:
+      L1L2_regularizer_1:
+        l1:
+        l2:
+      L1L2_regularizer_2:
+        l1:
+        l2:
+      L1L2_regularizer_3:
+        l1:
+        l2:
+    optimizer:
+    optimizersconf:
+      adam:
+        learning_rate:
+#        beta_1:
+#        beta_2:
+
+#Define the hparam types and domains for each of the above listed params
+hparams:
+  dataconf:
+    batch_size:
+      name: Batch_Size
+      display_name: BS
+      description: The batch size
+      domain: ${experiment.domains.int_interval}
+      domain_args:
+        min_value: 2
+        max_value: 50
+  modelconf:
+      optimizer:
+        name: Optimizer
+        display_name: Optimizer
+        description: The Optimizer
+        domain: ${experiment.domains.discrete}
+        domain_args:
+          values:
+            - ${modelconf.optimizersconf.adam}
+      optimizersconf:
+        adam:
+          learning_rate:
+            name: Learning Rate
+            display_name: LR
+            description: The optimizer learning rate
+            domain: ${experiment.domains.real_interval}
+            domain_args:
+              min_value: 0.0001
+              max_value: 0.01
+          beta_1:
+            name: Beta_1
+            display_name: Beta1
+            description: The optimizer Adam beta_1
+            domain: ${experiment.domains.real_interval}
+            domain_args:
+              min_value: 0.9
+              max_value: 0.999
+          beta_2:
+            name: Beta_2
+            display_name: Beta2
+            description: The optimizer Adam beta_2
+            domain: ${experiment.domains.real_interval}
+            domain_args:
+              min_value: 0.70
+              max_value: 0.90
+      layersconf:
+        Random_Flip:
+          mode:
+            name: Random_Flip_Mode
+            display_name: Random Flip Mode
+            description: The mode of random flipping data augmentation
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - horizontal
+                - vertical
+                - horizontal_and_vertical
+        Random_Brightness:
+          factor:
+            name: Random_Brightness_Factor
+            display_name: Random Brightness Factor
+            description: The factor of random brightness data augmentation
+            domain: ${experiment.domains.real_interval}
+            domain_args:
+              min_value: 0.0
+              max_value: 0.5
+        Random_Contrast:
+          factor:
+            name: Random_Contrast_Factor
+            display_name: Random Contrast Factor
+            description: The factor of random Contrast data augmentation
+            domain: ${experiment.domains.real_interval}
+            domain_args:
+              min_value: 0.0
+              max_value: 0.5
+        Conv2D_1:
+          filters:
+            name: Conv2D_1 Filters
+            display_name: Conv2D_1 Filters
+            description: The Conv2D_1 Filters
+            domain: ${experiment.domains.int_interval}
+            domain_args:
+              min_value: 5
+              max_value: 32
+          kernel_size:
+            name: Conv2D_1 Kernel_Size
+            display_name: Conv2D_1 Kernel Size
+            description: The Conv2D_1 Kernel Size
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 3
+                - 5
+                - 7
+                - 9
+          padding:
+            name: Conv2D_1 Padding
+            display_name: Conv2D_1 Padding
+            description: The Conv2D_1 Padding
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - valid
+                - same
+          activation:
+            name: Conv2D_1 Activation
+            display_name: Conv2D_1 Activation
+            description: The Conv2D_1 Activation
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - mish
+                - relu
+                - selu
+        Conv2D_2:
+          filters:
+            name: Conv2D_2 Filters
+            display_name: Conv2D_2 Filters
+            description: The Conv2D_2 Filters
+            domain: ${experiment.domains.int_interval}
+            domain_args:
+              min_value: 5
+              max_value: 32
+          kernel_size:
+            name: Conv2D_2 Kernel_Size
+            display_name: Conv2D_2 Kernel Size
+            description: The Conv2D_2 Kernel Size
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 3
+                - 5
+                - 7
+                - 9
+          padding:
+            name: Conv2D_2 Padding
+            display_name: Conv2D_2 Padding
+            description: The Conv2D_2 Padding
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - valid
+                - same
+          activation:
+            name: Conv2D_2 Activation
+            display_name: Conv2D_2 Activation
+            description: The Conv2D_2 Activation
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - mish
+                - relu
+                - selu
+        Conv2D_3:
+          filters:
+            name: Conv2D_3 Filters
+            display_name: Conv2D_3 Filters
+            description: The Conv2D_3 Filters
+            domain: ${experiment.domains.int_interval}
+            domain_args:
+              min_value: 5
+              max_value: 32
+          kernel_size:
+            name: Conv2D_3 Kernel_Size
+            display_name: Conv2D_3 Kernel Size
+            description: The Conv2D_3 Kernel Size
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 3
+                - 5
+                - 7
+                - 9
+          padding:
+            name: Conv2D_3 Padding
+            display_name: Conv2D_3 Padding
+            description: The Conv2D_3 Padding
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - valid
+                - same
+          activation:
+            name: Conv2D_3 Activation
+            display_name: Conv2D_3 Activation
+            description: The Conv2D_3 Activation
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - mish
+                - relu
+                - selu
+        Dense_1:
+          units:
+            name: Dense_1 Units
+            display_name: Dense_1 Units
+            description: The number of units in Dense_1
+            domain: ${experiment.domains.int_interval}
+            domain_args:
+              min_value: 25
+              max_value: 200
+          activation:
+            name: Dense_1 Activation
+            display_name: Dense_1 Activation
+            description: The Dense_1 Activation
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - mish
+                - relu
+                - selu
+        Dropout_1:
+          rate:
+            name: Dropout_1 Rate
+            display_name: Dropout_1 Rate
+            description: The dropout rate post Dense_1
+            domain: ${experiment.domains.real_interval}
+            domain_args:
+              min_value: 0.0
+              max_value: 0.8
+      regularizersconf:
+        L1L2_regularizer_1:
+          l1:
+            name: Conv2D_1 L1_Regulaization_Factor
+            display_name: Conv2D_1 L1 Regulaization Factor
+            description: The Conv2D_1 L1 Regulaization Factor
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 0.0
+                - 0.1
+                - 0.01
+                - 0.001
+                - 0.0001
+                - 0.00001
+          l2:
+            name: Conv2D_1 L2_Regulaization_Factor
+            display_name: Conv2D_1 L2 Regulaization Factor
+            description: The Conv2D_1 L2 Regulaization Factor
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 0.0
+                - 0.1
+                - 0.01
+                - 0.001
+                - 0.0001
+                - 0.00001
+        L1L2_regularizer_2:
+          l1:
+            name: Conv2D_2 L1_Regulaization_Factor
+            display_name: Conv2D_2 L1 Regulaization Factor
+            description: The Conv2D_2 L1 Regulaization Factor
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 0.0
+                - 0.1
+                - 0.01
+                - 0.001
+                - 0.0001
+                - 0.00001
+          l2:
+            name: Conv2D_2 L2_Regulaization_Factor
+            display_name: Conv2D_2 L2 Regulaization Factor
+            description: The Conv2D_2 L2 Regulaization Factor
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 0.0
+                - 0.1
+                - 0.01
+                - 0.001
+                - 0.0001
+                - 0.00001
+        L1L2_regularizer_3:
+          l1:
+            name: Conv2D_3 L1_Regulaization_Factor
+            display_name: Conv2D_3 L1 Regulaization Factor
+            description: The Conv2D_3 L1 Regulaization Factor
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 0.0
+                - 0.1
+                - 0.01
+                - 0.001
+                - 0.0001
+                - 0.00001
+          l2:
+            name: Conv2D_3 L2_Regulaization_Factor
+            display_name: Conv2D_3 L2 Regulaization Factor
+            description: The Conv2D_3 L2 Regulaization Factor
+            domain: ${experiment.domains.discrete}
+            domain_args:
+              values:
+                - 0.0
+                - 0.1
+                - 0.01
+                - 0.001
+                - 0.0001
+                - 0.00001

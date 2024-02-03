@@ -1,0 +1,35 @@
+defaults:
+  - layersconf: #create a layer list here
+    - input
+    - random_flip
+    - random_brightness
+    - random_contrast
+    - rescaling_layer
+    - conv2d_1
+    - maxpooling2d
+    - conv2d_2
+    - maxpooling2d
+    - conv2d_3
+    - maxpooling2d
+    - flatten
+    - dense_1
+    - dropout_1
+    - output
+  - regularizersconf: regularizers #override regularizers in the level params
+  - optimizersconf: optimizers
+  - lossconf: loss
+
+#override the optimizer here
+optimizer: ${modelconf.optimizersconf.adam}
+#override optimizer params in the optimizersconf for the specific optimizer of choice
+
+#override the loss here
+loss: ${modelconf.lossconf.sparse_categorical_crossentropy}
+#override loss params in the lossconf for the specific loss of choice
+
+epochs: 15
+replicates: 3
+
+metrics:
+  - accuracy
+

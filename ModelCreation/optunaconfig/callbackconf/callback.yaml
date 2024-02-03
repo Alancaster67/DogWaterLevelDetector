@@ -1,0 +1,12 @@
+selected:
+  - ${callbackconf.ModelCheckpoint}
+
+ReduceLROnPlateau:
+  _target_: tensorflow.keras.callbacks.ReduceLROnPlateau
+
+ModelCheckpoint:
+  _target_: tensorflow.keras.callbacks.ModelCheckpoint
+  filepath: ./ModelCheckpoints/${optunaconf.study_name}/Epoch{epoch:02d}-ValAcc{val_accuracy:.2f}.hdf5
+  monitor: val_accuracy
+  initial_value_threshold: 0.90
+  save_best_only: True

@@ -1,0 +1,3 @@
+sparse_categorical_crossentropy:
+  _target_: tensorflow.keras.losses.SparseCategoricalCrossentropy
+  from_logits: False

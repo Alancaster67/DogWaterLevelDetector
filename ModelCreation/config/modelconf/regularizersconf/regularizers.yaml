@@ -1,4 +1,14 @@
-L1L2_regularizer:
+L1L2_regularizer_1:
+  _target_: tensorflow.keras.regularizers.L1L2
+  l1: 0
+  l2: 0.003
+
+L1L2_regularizer_2:
+  _target_: tensorflow.keras.regularizers.L1L2
+  l1: 0
+  l2: 0.003
+
+L1L2_regularizer_3:
   _target_: tensorflow.keras.regularizers.L1L2
   l1: 0
   l2: 0.003

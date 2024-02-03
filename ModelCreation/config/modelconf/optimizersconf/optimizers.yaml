@@ -1,0 +1,6 @@
+adam:
+  _target_: tensorflow.keras.optimizers.Adam
+  learning_rate: 0.0011
+  weight_decay: !!null
+  beta_1: 0.9
+  beta_2: 0.999

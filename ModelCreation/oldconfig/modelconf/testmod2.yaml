@@ -1,0 +1,6 @@
+defaults:
+  - testlayers:
+    - input
+    - rescaling_layer
+    - conv2d_1
+  - regularizersconf: regularizers

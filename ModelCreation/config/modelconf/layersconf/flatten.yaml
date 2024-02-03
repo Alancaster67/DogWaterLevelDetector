@@ -1,0 +1,2 @@
+Flatten:
+  _target_: tensorflow.keras.layers.Flatten

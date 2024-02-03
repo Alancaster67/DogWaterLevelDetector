@@ -1,0 +1,11 @@
+int_interval:
+  _target_: tensorboard.plugins.hparams.api.IntInterval
+  _partial_: true
+
+real_interval:
+  _target_: tensorboard.plugins.hparams.api.RealInterval
+  _partial_: true
+
+discrete:
+  _target_: tensorboard.plugins.hparams.api.Discrete
+  _partial_: true

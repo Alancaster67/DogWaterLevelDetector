@@ -1,0 +1,3 @@
+Random_Rotation:
+  _target_: tensorflow.keras.layers.RandomRotation
+  factor: 0.0

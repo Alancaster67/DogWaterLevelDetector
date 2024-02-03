@@ -1,0 +1,89 @@
+selected: ${.Convnet}
+
+MobileNetV2Pretrained_wFineTune:
+  Preprocess:
+    block: ${preprocessconf.blocks.ImagePreprocessWORescaling}
+    mincount: 1
+    maxcount: 1
+    
+  Detector:
+    block: ${detectorconf.blocks.MobileNetV2}
+    pretrained:
+      fine_tuning:
+        unfreeze_top_xlayers:  50
+        additional_epochs: 25
+        lr_divisor: 10
+    mincount: 1
+    maxcount: 1
+    
+  GlobAvgPooling2D:
+    block: ${hiddenconf.blocks.GlobAvgPooling2D}
+    mincount: 1
+    maxcount: 1
+    
+  Dense:
+    block: ${hiddenconf.blocks.DenseDrop}
+    mincount: 1
+    maxcount: 3
+  
+  Output:
+    block: ${outputconf.blocks.BinaryClass}
+    mincount: 1
+    maxcount: 1    
+
+Convnet:
+  Preprocess:
+    block: ${preprocessconf.blocks.ImagePreprocess}
+    mincount: 1
+    maxcount: 1
+    
+  Conv:
+    block: ${hiddenconf.blocks.2DConvMaxPool}
+    mincount: 4
+    maxcount: 4
+    
+  Flatten:
+    block: ${hiddenconf.blocks.Flatten}
+    mincount: 1
+    maxcount: 1
+    
+  Dense:
+    block: ${hiddenconf.blocks.DenseDrop}
+    mincount: 1
+    maxcount: 2
+    
+  Output:
+    block: ${outputconf.blocks.BinaryClass}
+    mincount: 1
+    maxcount: 1
+
+ResNet50Pretrained_wFineTune:
+  Preprocess:
+    block: ${preprocessconf.blocks.ImagePreprocessWORescaling}
+    mincount: 1
+    maxcount: 1
+    
+  Detector:
+    block: ${detectorconf.blocks.ResNet50}
+    pretrained:
+      fine_tuning:
+        unfreeze_top_xlayers:  50
+        additional_epochs: 25
+        lr_divisor: 10
+    mincount: 1
+    maxcount: 1
+    
+  GlobAvgPooling2D:
+    block: ${hiddenconf.blocks.GlobAvgPooling2D}
+    mincount: 1
+    maxcount: 1
+    
+  Dense:
+    block: ${hiddenconf.blocks.DenseDrop}
+    mincount: 1
+    maxcount: 3
+
+  Output:
+    block: ${outputconf.blocks.BinaryClass}
+    mincount: 1
+    maxcount: 1    

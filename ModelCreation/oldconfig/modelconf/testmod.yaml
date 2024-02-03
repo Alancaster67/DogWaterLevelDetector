@@ -1,0 +1,10 @@
+defaults:
+  - testlayers:
+    - input
+    - rescaling_layer
+    - conv2d_1
+    - maxpooling2d
+    - flatten
+    - dense1
+    - output
+  - regularizersconf: regularizers

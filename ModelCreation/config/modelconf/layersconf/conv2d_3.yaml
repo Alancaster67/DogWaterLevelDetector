@@ -1,0 +1,7 @@
+Conv2D_3:
+  _target_: tensorflow.keras.layers.Conv2D
+  filters: 8
+  kernel_size: 5
+  padding: same
+  activation: relu
+  kernel_regularizer: ${modelconf.regularizersconf.L1L2_regularizer_3}

@@ -1,0 +1,3 @@
+Random_Brightness:
+  _target_: tensorflow.keras.layers.RandomBrightness
+  factor: 0.1
