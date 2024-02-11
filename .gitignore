@@ -2,8 +2,9 @@
 ModelCreation/venv/
 ModelCreation/multirun/
 ModelCreation/outputs/
-ModelCreation/venv/logs/
-ModelCreation/venv/ModelCheckpoints/
+ModelCreation/logs/
+ModelCreation/TensorBoardLogs/
+ModelCreation/ModelCheckpoints/
 .env
 *.jpg
 /Data
@@ -11,3 +12,5 @@ ModelCreation/venv/ModelCheckpoints/
 *.bat
 *.sh
 *.db
+*.tflite
+*.hdf5

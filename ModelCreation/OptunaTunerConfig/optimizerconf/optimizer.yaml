@@ -10,7 +10,7 @@ adam:
     log: True
     domain:
       - 0.00001
-      - 0.001
+      - 0.004
   weight_decay: !!null
   ^beta_1:
     name: Beta1

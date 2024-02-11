@@ -61,7 +61,7 @@ Convnet:
   Dense:
     block: ${hiddenconf.blocks.DenseDrop}
     mincount: 1
-    maxcount: 2
+    maxcount: 1
     
   Output:
     block: ${outputconf.blocks.BinaryClass}

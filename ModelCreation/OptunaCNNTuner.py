@@ -8,6 +8,8 @@ from flatten_dict import flatten, unflatten
 import optuna
 from optuna.integration import TFKerasPruningCallback
 from statistics import median
+import functools
+from optuna.integration.tensorboard import TensorBoardCallback
 
 OmegaConf.register_new_resolver("eval", eval)
 
@@ -65,7 +67,24 @@ def configure_architecture(trial, cfg):
             layers[k] = k[0] + '_' + v
         
     cfg.architecture = unflatten(layers)
+
+def configure_callbacks(trial,cfg):
+    cbs = instantiate(cfg.callbacks)
     
+    #configure special cases here
+    for id,cb in enumerate(cbs):
+        if isinstance(cb, functools.partial):
+            if 'callbacks.ModelCheckpoint' in str(cb.func):
+                checkpoint_path = pathlib.Path.cwd() / 'ModelCheckpoints' / cfg.optuna.study_name
+                checkpoint_path = str(checkpoint_path) + f'/trial{trial.number}-' + 'Epoch{epoch:02d}-ValAcc{val_accuracy:.2f}.hdf5'
+                checkpoint_cb = cb(filepath = checkpoint_path)
+                cbs[id] = checkpoint_cb
+    
+    if cfg.optuna.pruning.enabled: #adding optuna pruning callback
+        cbs.append(TFKerasPruningCallback(trial=trial, monitor= cfg.optuna.pruning.monitor))
+    
+    return cbs
+  
 def correct_config(cfg):
     cfg = flatten(OmegaConf.to_container(cfg))
     
@@ -111,7 +130,7 @@ def trialmodel(trial, cfg):
     
     #if transfer_learning:
     #    def preprocess(images, labels):
-    #        prep_fun = instantiate(cfg.transfer_learning.preprocess_function, _partial_=True)
+    #        prep_fun from optuna.integration.tensorboard import TensorBoardCallback= instantiate(cfg.transfer_learning.preprocess_function, _partial_=True)
     #        return prep_fun(images), labels
         
     #    train_ds = train_ds.map(preprocess)
@@ -128,7 +147,7 @@ def trialmodel(trial, cfg):
 
     #    model.add(layer)
     
-              
+    #Using the functional API for flexibility          
     model_inputs = instantiate(cfg.input)
     for count, k in enumerate(cfg.architecture, start=1):
         layer = instantiate(cfg.architecture[k])
@@ -157,15 +176,15 @@ def trialmodel(trial, cfg):
                     layer_inputs = layer(layer_inputs)
     
     model = tf.keras.Model(model_inputs, output)
-    
-    
     model.compile(optimizer = instantiate(cfg.optimizer),
                 loss = instantiate(cfg.loss),
                 metrics = cfg.metric.primary)   
     
-    cbs = instantiate(cfg.callbacks)
-    if cfg.optuna.pruning.enabled:
-        cbs.append(TFKerasPruningCallback(trial=trial, monitor= cfg.optuna.pruning.monitor))
+    cbs = configure_callbacks(trial = trial, cfg = cfg)
+    
+    #cbs = instantiate(cfg.callbacks)
+    #if cfg.optuna.pruning.enabled:
+    #    cbs.append(TFKerasPruningCallback(trial=trial, monitor= cfg.optuna.pruning.monitor))
     
     history = model.fit(
         train_ds,
@@ -220,6 +239,8 @@ if __name__ == "__main__":
     if opt_cfg.pruning.enabled:
         pruner = instantiate(opt_cfg.pruning.pruner)
     
+    tensorboard_callback = TensorBoardCallback(f"TensorBoardLogs/{opt_cfg.study_name}/", metric_name="accuracy")
+    
     study = optuna.create_study(
         study_name = opt_cfg.study_name,
         storage = opt_cfg.storage,
@@ -235,4 +256,5 @@ if __name__ == "__main__":
             tf.errors.NotFoundError
             ),
         gc_after_trial = True,
+        callbacks = [tensorboard_callback]
         )
